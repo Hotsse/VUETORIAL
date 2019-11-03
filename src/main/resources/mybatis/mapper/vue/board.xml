@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	
+	<!-- 관리자 계정 정보 획득 -->
+	<!--
+	<select id="getDaouMember" parameterType="map" resultType="com.daou.admin.login.vo.MemberVO">
+		SELECT user_id as userId
+			, user_nm as userNm
+			, user_dept as userDept
+			, user_role as userRole
+			, is_admin_yn as isAdminYn
+		FROM daou_member (nolock)
+		WHERE user_id = #{userId}
+			AND user_pw = #{userPw}
+	</select>
+	-->
+	
+	<select id="test" parameterType="map" resultType="int">
+		SELECT 1		
+	</select>
+		
+</mapper>
