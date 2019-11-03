@@ -6,6 +6,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -15,34 +17,59 @@
 	<p>Spring Boot + H2 + Vue.js(in Thymeleaf)</p> 
 </div>
 
-
-
 <div class="container">
 	<div class="row">
-		<table class="table table-bordered table-hover">
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>제목이들어간다제목이들어간다제목이들어간다</td>
-					<td>작성자</td>
-					<td>1234</td>
-				</tr>
-			</tbody>
-		</table>
+		<div id="boardTable">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="list in boardList">
+						<td>{{list.boardIdx}}</td>
+						<td>{{list.title}}</td>
+						<td>{{list.userIdx}}</td>
+						<td>{{list.viewCnt}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
 	<p>Footer</p>
 </div>
+
+
+
+<script type="text/javascript">
+
+var getList = function(){
+	axios.get('/board/getList')
+    .then(function(response) {
+    	boardList.boardList = response.data;
+    })
+    .catch(function(error) {
+    	console.log(error);
+    });
+}
+
+var boardList = new Vue({
+	el: '#boardTable',
+	data: {
+		boardList: null
+	},
+	mounted: function(){
+		getList();
+	}
+});
+</script>
 
 </body>
 </html>
