@@ -17,4 +17,6 @@ spring:
     livereload:
       enabled: true
       restart: false
-      
+  mvc:
+    favicon:
+      enabled: false
