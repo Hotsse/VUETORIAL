@@ -1,0 +1,977 @@
+2019-11-04 10:46:47 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "                
+USE [[*]DAOU_ADMIN]
+GO
+
+        
+CREATE TABLE [USER] (
+	[USER_IDX] [INT] NOT NULL IDENTITY (1,  1),            
+	[USER_ID] [VARCHAR](20) NOT NULL,           
+	[USER_PW] [CHAR](64) NOT NULL,            
+	[USER_NM] [VARCHAR](20) NOT NULL         
+)
+GO
+
+            
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [PK_USER]
+		PRIMARY KEY NONCLUSTERED (
+			[USER_IDX] ASC
+		)
+GO
+
+                     
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [CK_DAOU_MEMBER_IS_ADMIN_YN]
+		CHECK (IS_ADMIN_YN IN ('Y', 'N'))
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'고유번호', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_idx'
+GO
+
+         
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'아이디', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_id'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'패스워드', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_pw'
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'이름', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_nm'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'PK_user'
+GO
+
+                     
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'시스템 담당자 여부 제약사항', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'CK_daou_member_is_admin_yn'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'INDEX', @LEVEL2NAME=N'PK_user'
+GO "; expected "identifier"; SQL statement:
+/* DAOU_ADMIN */
+USE [DAOU_ADMIN]
+GO
+
+/* 계정 */
+CREATE TABLE [user] (
+	[user_idx] [int] NOT NULL IDENTITY (1,  1),  /* 고유번호 */
+	[user_id] [varchar](20) NOT NULL,  /* 아이디 */
+	[user_pw] [char](64) NOT NULL,  /* 패스워드 */
+	[user_nm] [varchar](20) NOT NULL /* 이름 */
+)
+GO
+
+/* 계정 기본키 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [PK_user]
+		PRIMARY KEY NONCLUSTERED (
+			[user_idx] ASC
+		)
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [CK_daou_member_is_admin_yn]
+		CHECK (is_admin_yn in ('Y', 'N'))
+GO
+
+/* 계정 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user'
+GO
+
+/* 고유번호 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'고유번호', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_idx'
+GO
+
+/* 아이디 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'아이디', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_id'
+GO
+
+/* 패스워드 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'패스워드', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_pw'
+GO
+
+/* 이름 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'이름', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_nm'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'PK_user'
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'시스템 담당자 여부 제약사항', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'CK_daou_member_is_admin_yn'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'INDEX', @level2name=N'PK_user'
+GO [42001-199]
+2019-11-04 10:48:16 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "             
+USE [[*]TEST_DB]
+GO
+
+        
+CREATE TABLE [USER] (
+	[USER_IDX] [INT] NOT NULL IDENTITY (1,  1),            
+	[USER_ID] [VARCHAR](20) NOT NULL,           
+	[USER_PW] [CHAR](64) NOT NULL,            
+	[USER_NM] [VARCHAR](20) NOT NULL         
+)
+GO
+
+            
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [PK_USER]
+		PRIMARY KEY NONCLUSTERED (
+			[USER_IDX] ASC
+		)
+GO
+
+                     
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [CK_DAOU_MEMBER_IS_ADMIN_YN]
+		CHECK (IS_ADMIN_YN IN ('Y', 'N'))
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'고유번호', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_idx'
+GO
+
+         
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'아이디', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_id'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'패스워드', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_pw'
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'이름', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_nm'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'PK_user'
+GO
+
+                     
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'시스템 담당자 여부 제약사항', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'CK_daou_member_is_admin_yn'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'INDEX', @LEVEL2NAME=N'PK_user'
+GO "; expected "identifier"; SQL statement:
+/* test_db */
+USE [test_db]
+GO
+
+/* 계정 */
+CREATE TABLE [user] (
+	[user_idx] [int] NOT NULL IDENTITY (1,  1),  /* 고유번호 */
+	[user_id] [varchar](20) NOT NULL,  /* 아이디 */
+	[user_pw] [char](64) NOT NULL,  /* 패스워드 */
+	[user_nm] [varchar](20) NOT NULL /* 이름 */
+)
+GO
+
+/* 계정 기본키 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [PK_user]
+		PRIMARY KEY NONCLUSTERED (
+			[user_idx] ASC
+		)
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [CK_daou_member_is_admin_yn]
+		CHECK (is_admin_yn in ('Y', 'N'))
+GO
+
+/* 계정 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user'
+GO
+
+/* 고유번호 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'고유번호', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_idx'
+GO
+
+/* 아이디 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'아이디', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_id'
+GO
+
+/* 패스워드 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'패스워드', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_pw'
+GO
+
+/* 이름 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'이름', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_nm'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'PK_user'
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'시스템 담당자 여부 제약사항', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'CK_daou_member_is_admin_yn'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'INDEX', @level2name=N'PK_user'
+GO [42001-199]
+2019-11-04 10:48:47 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "        
+CREATE TABLE [[*]USER] (
+	[USER_IDX] [INT] NOT NULL IDENTITY (1,  1),            
+	[USER_ID] [VARCHAR](20) NOT NULL,           
+	[USER_PW] [CHAR](64) NOT NULL,            
+	[USER_NM] [VARCHAR](20) NOT NULL         
+)
+GO
+
+            
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [PK_USER]
+		PRIMARY KEY NONCLUSTERED (
+			[USER_IDX] ASC
+		)
+GO
+
+                     
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [CK_DAOU_MEMBER_IS_ADMIN_YN]
+		CHECK (IS_ADMIN_YN IN ('Y', 'N'))
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'고유번호', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_idx'
+GO
+
+         
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'아이디', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_id'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'패스워드', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_pw'
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'이름', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_nm'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'PK_user'
+GO
+
+                     
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'시스템 담당자 여부 제약사항', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'CK_daou_member_is_admin_yn'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'INDEX', @LEVEL2NAME=N'PK_user'
+GO "; expected "identifier"; SQL statement:
+/* 계정 */
+CREATE TABLE [user] (
+	[user_idx] [int] NOT NULL IDENTITY (1,  1),  /* 고유번호 */
+	[user_id] [varchar](20) NOT NULL,  /* 아이디 */
+	[user_pw] [char](64) NOT NULL,  /* 패스워드 */
+	[user_nm] [varchar](20) NOT NULL /* 이름 */
+)
+GO
+
+/* 계정 기본키 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [PK_user]
+		PRIMARY KEY NONCLUSTERED (
+			[user_idx] ASC
+		)
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [CK_daou_member_is_admin_yn]
+		CHECK (is_admin_yn in ('Y', 'N'))
+GO
+
+/* 계정 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user'
+GO
+
+/* 고유번호 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'고유번호', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_idx'
+GO
+
+/* 아이디 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'아이디', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_id'
+GO
+
+/* 패스워드 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'패스워드', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_pw'
+GO
+
+/* 이름 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'이름', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_nm'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'PK_user'
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'시스템 담당자 여부 제약사항', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'CK_daou_member_is_admin_yn'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'INDEX', @level2name=N'PK_user'
+GO [42001-199]
+2019-11-04 10:49:14 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "        
+CREATE TABLE [[*]USER] (
+	[USER_IDX] [INT] NOT NULL IDENTITY (1,  1),            
+	[USER_ID] [VARCHAR](20) NOT NULL,           
+	[USER_PW] [CHAR](64) NOT NULL,            
+	[USER_NM] [VARCHAR](20) NOT NULL         
+)
+GO
+
+            
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [PK_USER]
+		PRIMARY KEY NONCLUSTERED (
+			[USER_IDX] ASC
+		)
+GO
+
+                     
+ALTER TABLE [USER]
+	ADD
+		CONSTRAINT [CK_DAOU_MEMBER_IS_ADMIN_YN]
+		CHECK (IS_ADMIN_YN IN ('Y', 'N'))
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'고유번호', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_idx'
+GO
+
+         
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'아이디', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_id'
+GO
+
+          
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'패스워드', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_pw'
+GO
+
+        
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'이름', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'COLUMN', @LEVEL2NAME=N'user_nm'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'PK_user'
+GO
+
+                     
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'시스템 담당자 여부 제약사항', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'CONSTRAINT', @LEVEL2NAME=N'CK_daou_member_is_admin_yn'
+GO
+
+            
+EXEC SP_ADDEXTENDEDPROPERTY 
+	@NAME=N'MS_Description', @VALUE=N'계정 기본키', 
+	@LEVEL0TYPE=N'SCHEMA', @LEVEL0NAME=N'dbo', 
+	@LEVEL1TYPE=N'TABLE', @LEVEL1NAME=N'user', 
+	@LEVEL2TYPE=N'INDEX', @LEVEL2NAME=N'PK_user'
+GO "; expected "identifier"; SQL statement:
+/* 계정 */
+CREATE TABLE [user] (
+	[user_idx] [int] NOT NULL IDENTITY (1,  1),  /* 고유번호 */
+	[user_id] [varchar](20) NOT NULL,  /* 아이디 */
+	[user_pw] [char](64) NOT NULL,  /* 패스워드 */
+	[user_nm] [varchar](20) NOT NULL /* 이름 */
+)
+GO
+
+/* 계정 기본키 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [PK_user]
+		PRIMARY KEY NONCLUSTERED (
+			[user_idx] ASC
+		)
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+ALTER TABLE [user]
+	ADD
+		CONSTRAINT [CK_daou_member_is_admin_yn]
+		CHECK (is_admin_yn in ('Y', 'N'))
+GO
+
+/* 계정 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user'
+GO
+
+/* 고유번호 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'고유번호', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_idx'
+GO
+
+/* 아이디 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'아이디', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_id'
+GO
+
+/* 패스워드 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'패스워드', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_pw'
+GO
+
+/* 이름 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'이름', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'COLUMN', @level2name=N'user_nm'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'PK_user'
+GO
+
+/* 시스템 담당자 여부 제약사항 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'시스템 담당자 여부 제약사항', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'CONSTRAINT', @level2name=N'CK_daou_member_is_admin_yn'
+GO
+
+/* 계정 기본키 */
+EXEC sp_addextendedproperty 
+	@name=N'MS_Description', @value=N'계정 기본키', 
+	@level0type=N'SCHEMA', @level0name=N'dbo', 
+	@level1type=N'TABLE', @level1name=N'user', 
+	@level2type=N'INDEX', @level2name=N'PK_user'
+GO [42001-199]
+2019-11-04 10:49:24 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "        
+CREATE TABLE [[*]USER] (
+	[USER_IDX] [INT] NOT NULL IDENTITY (1,  1),            
+	[USER_ID] [VARCHAR](20) NOT NULL,           
+	[USER_PW] [CHAR](64) NOT NULL,            
+	[USER_NM] [VARCHAR](20) NOT NULL         
+) "; expected "identifier"; SQL statement:
+/* 계정 */
+CREATE TABLE [user] (
+	[user_idx] [int] NOT NULL IDENTITY (1,  1),  /* 고유번호 */
+	[user_id] [varchar](20) NOT NULL,  /* 아이디 */
+	[user_pw] [char](64) NOT NULL,  /* 패스워드 */
+	[user_nm] [varchar](20) NOT NULL /* 이름 */
+) [42001-199]
+2019-11-04 10:49:55 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "        
+CREATE TABLE USER (
+	[[*]USER_IDX] [INT] NOT NULL IDENTITY (1,  1),            
+	[USER_ID] [VARCHAR](20) NOT NULL,           
+	[USER_PW] [CHAR](64) NOT NULL,            
+	[USER_NM] [VARCHAR](20) NOT NULL         
+) "; expected "identifier"; SQL statement:
+/* 계정 */
+CREATE TABLE user (
+	[user_idx] [int] NOT NULL IDENTITY (1,  1),  /* 고유번호 */
+	[user_id] [varchar](20) NOT NULL,  /* 아이디 */
+	[user_pw] [char](64) NOT NULL,  /* 패스워드 */
+	[user_nm] [varchar](20) NOT NULL /* 이름 */
+) [42001-199]
+2019-11-04 10:50:11 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE USER (
+	[[*]USER_IDX] [INT] NOT NULL IDENTITY (1,  1),
+	[USER_ID] [VARCHAR](20) NOT NULL, 
+	[USER_PW] [CHAR](64) NOT NULL, 
+	[USER_NM] [VARCHAR](20) NOT NULL 
+) "; expected "identifier"; SQL statement:
+CREATE TABLE user (
+	[user_idx] [int] NOT NULL IDENTITY (1,  1),
+	[user_id] [varchar](20) NOT NULL, 
+	[user_pw] [char](64) NOT NULL, 
+	[user_nm] [varchar](20) NOT NULL 
+) [42001-199]
+2019-11-04 10:50:22 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: ; SQL statement:
+CREATE TABLE user (
+	user_idx [int] NOT NULL IDENTITY (1,  1),
+	user_id [varchar](20) NOT NULL, 
+	user_pw [char](64) NOT NULL, 
+	user_nm [varchar](20) NOT NULL 
+) [50004-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:5524)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5254)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:7932)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:7832)
+	at org.h2.command.Parser.parseCreate(Parser.java:5818)
+	at org.h2.command.Parser.parsePrepared(Parser.java:846)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp.query(WebApp.java:1087)
+	at org.h2.server.web.WebApp.process(WebApp.java:237)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:169)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:121)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:158)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1579)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Unknown Source)
+2019-11-04 10:51:16 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USER
+	ADD
+		CONSTRAINT PK_USER
+		PRIMARY KEY NONCLUSTERED[*] (
+			USER_IDX ASC
+		)
+GO "; expected "HASH, ("; SQL statement:
+ALTER TABLE user
+	ADD
+		CONSTRAINT PK_user
+		PRIMARY KEY NONCLUSTERED (
+			user_idx ASC
+		)
+GO [42001-199]
+2019-11-04 10:51:34 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USER
+	ADD
+		CONSTRAINT PK_USER
+		PRIMARY KEY NONCLUSTERED[*] (
+			USER_IDX ASC
+		) "; expected "HASH, ("; SQL statement:
+ALTER TABLE user
+	ADD
+		CONSTRAINT PK_user
+		PRIMARY KEY NONCLUSTERED (
+			user_idx ASC
+		) [42001-199]
+2019-11-04 10:51:37 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USER
+	ADD
+		CONSTRAINT PK_USER
+		PRIMARY KEY NONCLUSTERED[*] (
+			USER_IDX ASC
+		) "; expected "HASH, ("; SQL statement:
+ALTER TABLE user
+	ADD
+		CONSTRAINT PK_user
+		PRIMARY KEY NONCLUSTERED (
+			user_idx ASC
+		) [42001-199]
+2019-11-04 10:51:42 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USER
+	ADD
+		CONSTRAINT PK_USER
+		PRIMARY KEY NONCLUSTERED[*] (
+			USER_IDX ASC
+		) "; expected "HASH, ("; SQL statement:
+ALTER TABLE user
+	ADD
+		CONSTRAINT PK_user
+		PRIMARY KEY NONCLUSTERED (
+			user_idx ASC
+		) [42001-199]
+2019-11-04 10:51:45 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USER
+	ADD
+		CONSTRAINT PK_USER
+		PRIMARY KEY NONCLUSTERED[*] (
+			USER_IDX ASC
+		) "; expected "HASH, ("; SQL statement:
+ALTER TABLE user
+	ADD
+		CONSTRAINT PK_user
+		PRIMARY KEY NONCLUSTERED (
+			user_idx ASC
+		) [42001-199]
+2019-11-04 10:51:57 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "GO[*]
+
+ALTER TABLE USER
+	ADD
+		CONSTRAINT PK_USER
+		PRIMARY KEY NONCLUSTERED (
+			USER_IDX ASC
+		) "; expected "GRANT"; SQL statement:
+GO
+
+ALTER TABLE user
+	ADD
+		CONSTRAINT PK_user
+		PRIMARY KEY NONCLUSTERED (
+			user_idx ASC
+		) [42001-199]
+2019-11-04 10:52:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USER
+	ADD
+		CONSTRAINT PK_USER
+		PRIMARY KEY NONCLUSTERED[*] (
+			USER_IDX ASC
+		) "; expected "HASH, ("; SQL statement:
+ALTER TABLE user
+	ADD
+		CONSTRAINT PK_user
+		PRIMARY KEY NONCLUSTERED (
+			user_idx ASC
+		) [42001-199]
+2019-11-04 10:54:09 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Invalid parameter count for "USER", expected count: "0"; SQL statement:
+select *
+from user (nolock) [7001-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.expression.function.Function.setParameter(Function.java:580)
+	at org.h2.command.Parser.readFunction(Parser.java:3660)
+	at org.h2.command.Parser.readTableFunction(Parser.java:1937)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1892)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:2641)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2788)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:2636)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:2469)
+	at org.h2.command.Parser.parseSelect(Parser.java:2440)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp.query(WebApp.java:1087)
+	at org.h2.server.web.WebApp.process(WebApp.java:237)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:169)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:121)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:158)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1579)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Unknown Source)
+2019-11-04 11:03:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "윤호세" [22018-199]
