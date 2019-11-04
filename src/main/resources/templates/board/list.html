@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Bootstrap 4 Website Example</title>
+<title>Vuetorial</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -17,29 +17,25 @@
 	<p>Spring Boot + H2 + Vue.js(in Thymeleaf)</p> 
 </div>
 
-<div class="container">
-	<div class="row">
-		<div id="boardTable">
-			<table class="table table-bordered table-hover">
-				<thead>
-					<tr>
-						<th>No.</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>조회수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="list in boardList">
-						<td>{{list.boardIdx}}</td>
-						<td>{{list.title}}</td>
-						<td>{{list.userIdx}}</td>
-						<td>{{list.viewCnt}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+<div id="boardTable" class="row" style="padding:0px 10px;">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="list in boardList" v-on:click="viewContent(list.boardIdx)">
+				<td>{{list.boardIdx}}</td>
+				<td>{{list.title}}</td>
+				<td>{{list.userNm}}</td>
+				<td>{{list.viewCnt}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -67,6 +63,11 @@ var boardList = new Vue({
 	},
 	mounted: function(){
 		getList();
+	},
+	methods: {
+		viewContent: function(boardIdx) {
+			window.location.href=`/board/viewContent?boardIdx=${boardIdx}`;
+		}
 	}
 });
 </script>

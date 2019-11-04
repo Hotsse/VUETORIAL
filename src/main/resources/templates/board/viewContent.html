@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Vuetorial</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+	<h1>Vuetorial Test Site</h1>
+	<p>Spring Boot + H2 + Vue.js(in Thymeleaf)</p> 
+</div>
+
+<div id="boardTable" class="row" style="padding:0px 10px;">
+	<table class="table table-bordered">
+		<colgroup>
+			<col width="20%" />
+			<col width="80%" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th>제목</th>
+				<td th:text="${board.title}"></td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td th:text="${board.userNm}"></td>
+			</tr>
+			<tr>
+				<th>조회수</th>
+				<td th:text="${board.viewCnt}"></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>내용</th>
+				<td th:text="${board.content}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+	<p>Footer</p>
+</div>
+
+
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>

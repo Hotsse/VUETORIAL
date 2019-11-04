@@ -2,23 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board">
-	
-	<!-- 관리자 계정 정보 획득 -->
-	<!--
-	<select id="getDaouMember" parameterType="map" resultType="com.daou.admin.login.vo.MemberVO">
-		SELECT user_id as userId
-			, user_nm as userNm
-			, user_dept as userDept
-			, user_role as userRole
-			, is_admin_yn as isAdminYn
-		FROM daou_member (nolock)
-		WHERE user_id = #{userId}
-			AND user_pw = #{userPw}
+
+	<select id="getList" parameterType="map" resultType="com.hotsse.vuetorial.board.vo.BoardVO">
+		SELECT b.board_idx as boardIdx
+			, b.title as title
+			, b.content as content
+			, b.view_cnt as viewCnt
+			, u.user_nm as userNm
+		FROM board b
+			LEFT OUTER JOIN user u
+			ON b.user_idx = u.user_idx
+		ORDER BY b.board_idx DESC
 	</select>
-	-->
 	
-	<select id="test" parameterType="map" resultType="int">
-		SELECT 1		
+	<select id="getContent" parameterType="map" resultType="com.hotsse.vuetorial.board.vo.BoardVO">
+		SELECT b.board_idx as boardIdx
+			, b.title as title
+			, b.content as content
+			, b.view_cnt as viewCnt
+			, u.user_nm as userNm
+		FROM board b
+			LEFT OUTER JOIN user u
+			ON b.user_idx = u.user_idx
+		WHERE b.board_idx = #{boardIdx}
 	</select>
 		
 </mapper>
