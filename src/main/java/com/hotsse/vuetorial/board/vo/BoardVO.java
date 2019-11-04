@@ -8,5 +8,5 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private int viewCnt;
-	private int userIdx;
+	private String userNm;
 }

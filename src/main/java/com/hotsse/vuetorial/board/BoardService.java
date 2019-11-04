@@ -17,8 +17,8 @@ public class BoardService {
 		return boardDao.getList();
 	}
 	
-	public int test() {
-		return boardDao.test();
+	public BoardVO getContent(int boardIdx) {
+		return boardDao.getContent(boardIdx);
 	}
 
 }
